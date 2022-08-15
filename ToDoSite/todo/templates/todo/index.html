@@ -1,0 +1,41 @@
+{% extends "todo/base.html" %}
+{% load static %}
+{% block content %}
+    <script>
+        let completed_image = "{% static 'todo/completed.png' %}";
+        let incomplete_image = "{% static 'todo/incomplete.png' %}";
+    </script>
+    {% if list %}
+        <div id="list-container">
+        {% for ActionItem in list %}
+            <div class="action-item-container">
+                {% if ActionItem.completed %}
+                    <div class="completeness-image-container">
+                        <img class="completeness_icon" src="{% static 'todo/completed.png' %}" alt="Completed"/>
+                    </div>
+                    <div class="action-item-text">
+                        <del>{{ ActionItem.text }}</del>
+                    </div>
+                    <div class="transition_button_container">
+                        <div class="transition_button" onclick="location.href='{% url "swap-status" ActionItem.id %}'">UNDO</div>
+                    </div>
+                {% else %}
+                    <div class="completeness-image-container">
+                        <img class="completeness_icon" src="{% static 'todo/incomplete.png' %}" alt="Incomplete"/>
+                    </div>
+                    <div class="action-item-text">
+                        {{ ActionItem.text }}
+                    </div>
+                    <div class="transition_button_container">
+                        <div class="transition_button" onclick="location.href='{% url "swap-status" ActionItem.id %}'">DO</div>
+                    </div>
+                {% endif %}
+            </div>
+        {% empty %}
+            <h4>You have no lists!</h4>
+        {% endfor %}
+        </div>
+    {% else %}
+        <p>No action items are available.</p>
+    {% endif %}
+{% endblock %}
