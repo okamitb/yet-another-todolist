@@ -2,9 +2,17 @@ from django.db import models
 
 
 # Create your models here.
-class ActionItem(models.Model):
+class Task(models.Model):
+
+    LIST_TYPES = [
+        ('D', 'daily'),
+        ('W', 'weekly'),
+        ('M', 'monthly')
+    ]
+
     text = models.CharField(max_length=300)
     completed = models.BooleanField()
+    list_type = models.CharField(max_length=1, choices=LIST_TYPES, default="W")
 
     def __str__(self):
         complete = "Done" if self.is_completed() else "Not Done"

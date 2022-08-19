@@ -7,14 +7,16 @@ body {
     margin: 10px;
 }
 
-#list-container {
+.list-container {
     border: 1px solid black;
     border-radius: 5px;
-    box-shadow: 1px 1px 5px;
-    width: 435px;
+    width: 400px;
+    padding-bottom: 10px;
+    float: left;
+    margin-right: 10px;
 }
 
-#weekly_title {
+.list_title {
     margin-top: 10px;
     width: 100%;
     text-align: center;
@@ -22,14 +24,14 @@ body {
     font-size: 200%;
 }
 
-.action-item-container, .empty-action-item-container {
+.task-container, .empty-task-container {
     padding: 5px 10px 5px 10px;
     margin: 5px;
-    width: 410px;
+    width: 375px;
     overflow: auto;
 }
 
-.empty-action-item-container {
+.empty-task-container {
     padding-left: 37px;
 }
 
@@ -48,10 +50,10 @@ input {
   all: unset;
 }
 
-.action-item-input, .action-item-text {
+.task-input, .task-text {
     height: 16px;
     margin-bottom: 1px;
-    width: 300px;
+    width: 265px;
     float: left;
     border-bottom: 1px solid black;
 }
