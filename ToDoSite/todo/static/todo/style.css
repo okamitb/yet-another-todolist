@@ -7,13 +7,104 @@ body {
     margin: 10px;
 }
 
+/*
+Login
+ */
+
+#login-body {
+    width: 100%;
+    text-align: center;
+}
+
+.blue {
+    color: blue;
+}
+
+#login-container {
+    border: 1px solid black;
+    width: 310px;
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+}
+
+#login-container input {
+    border-bottom: 1px solid black;
+    margin: 10px;
+    text-align: left;
+}
+
+#login-container button {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 3px 5px 3px 5px;
+}
+
+.form-message {
+    width: 80%;
+    margin: 7px auto;
+    font-size: 90%;
+    padding: 2px 3px;
+    line-height: 15px;
+}
+
+/*
+User Registration
+ */
+
+#register-body {
+    width: 100%;
+    text-align: center;
+}
+
+#register-container {
+    border: 1px solid black;
+    width: 400px;
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+}
+
+#register-container label {
+    position: absolute;
+}
+
+#register-container input[type=text],
+#register-container input[type=password],
+#register-container input[type=email]
+{
+    margin-top: 20px;
+}
+
+#register-container h1 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 180%;
+}
+
+
+#register-container input {
+    border: 1px solid black;
+    text-align: left;
+    padding: 2px 5px 2px 5px;
+}
+
+#register-container button {
+    margin: 10px auto 20px auto;
+    padding: 3px 5px 3px 5px;
+}
+
+/*
+ToDo List
+ */
+
 .list-container {
     border: 1px solid black;
-    border-radius: 5px;
     width: 400px;
     padding-bottom: 10px;
     float: left;
     margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .list_title {

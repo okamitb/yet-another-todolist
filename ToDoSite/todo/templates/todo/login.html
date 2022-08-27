@@ -1,10 +1,26 @@
 <!--Login-->
-<div class="container py-5">
-  <h1>Login</h1>
-  <form method="POST">
-    {% csrf_token %}
-    {{ login_form }}
-    <button class="btn btn-primary" type="submit">Login</button>
-  </form>
-  <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
+{% extends "todo/bootstrap_base.html" %}
+{% block content %}
+<div id="login-body">
+  <div id="login-container">
+    <h1>Login</h1>
+    {% for message in messages %}
+		{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+		<div class="alert alert-danger failed-form" role="alert">
+			 {{ message }}
+		</div>
+        {% else %}
+        <div class="alert alert-success form-message" role="alert">
+			 {{ message }}
+		</div>
+		{% endif %}
+		{% endfor %}
+    <form method="POST">
+      {% csrf_token %}
+      {{ login_form.as_p }}
+      <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+    <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
+  </div>
 </div>
+{% endblock %}
