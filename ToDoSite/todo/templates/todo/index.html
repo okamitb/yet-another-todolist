@@ -1,145 +1,147 @@
 {% extends "todo/bootstrap_base.html" %}
 {% load static %}
 {% block content %}
-    <div class="list-container">
-        <div class="list_title">
-            Daily
-        </div>
-        {% if daily_list %}
-        {% for Task in daily_list %}
-        <div class="task-container">
-            {% if Task.completed %}
-            <div class="completeness-image-container">
-                <img class="completeness_icon" src="{% static 'todo/completed.png' %}" alt="Completed"/>
+    <div id="lists-container">
+        <div class="list-container">
+            <div class="list_title">
+                Daily
             </div>
-            <div class="task-text">
-                <del>{{ Task.text }}</del>
-            </div>
-            <div class="delete_button" onclick="location.href='{% url "delete-task" Task.id %}'">
-                <img class="delete_icon" src="{% static 'todo/delete.png' %}" alt="Delete"/>
-            </div>
-            <div class="transition_button_container">
-                <div class="transition_button" onclick="location.href='{% url "swap-status" Task.id %}'">UNDO</div>
-            </div>
-            {% else %}
-            <div class="completeness-image-container">
-                <img class="completeness_icon" src="{% static 'todo/incomplete.png' %}" alt="Incomplete"/>
-            </div>
-            <div class="task-text">
-                {{ Task.text }}
-            </div>
-            <div class="delete_button" onclick="location.href='{% url "delete-task" Task.id %}'">
-                <img class="delete_icon" src="{% static 'todo/delete.png' %}" alt="Delete" />
-            </div>
-            <div class="transition_button_container">
-                <div class="transition_button" onclick="location.href='{% url "swap-status" Task.id %}'">DO</div>
-            </div>
-        {% endif %}
-        </div>
-        {% empty %}
-        {% endfor %}
-        {% endif %}
-        <div class="empty-task-container">
-            <form id="new-task-form" action="/add-task/D" method="POST">
-                <input class="task-input" type="text" name="task-text" value="New Action Item">
-                <div class="generic_button_container">
-                    <input type="submit" class="add_button" value="ADD">
+            {% if daily_list %}
+            {% for Task in daily_list %}
+            <div class="task-container">
+                {% if Task.completed %}
+                <div class="completeness-image-container">
+                    <img class="completeness_icon" src="{% static 'todo/completed.png' %}" alt="Completed"/>
                 </div>
-            </form>
-        </div>
-    </div>
-    <div class="list-container">
-        <div class="list_title">
-            Weekly
-        </div>
-        {% if weekly_list %}
-        {% for Task in weekly_list %}
-        <div class="task-container">
-            {% if Task.completed %}
-            <div class="completeness-image-container">
-                <img class="completeness_icon" src="{% static 'todo/completed.png' %}" alt="Completed"/>
-            </div>
-            <div class="task-text">
-                <del>{{ Task.text }}</del>
-            </div>
-            <div class="delete_button" onclick="location.href='{% url "delete-task" Task.id %}'">
-                <img class="delete_icon" src="{% static 'todo/delete.png' %}" alt="Delete"/>
-            </div>
-            <div class="transition_button_container">
-                <div class="transition_button" onclick="location.href='{% url "swap-status" Task.id %}'">UNDO</div>
-            </div>
-            {% else %}
-            <div class="completeness-image-container">
-                <img class="completeness_icon" src="{% static 'todo/incomplete.png' %}" alt="Incomplete"/>
-            </div>
-            <div class="task-text">
-                {{ Task.text }}
-            </div>
-            <div class="delete_button" onclick="location.href='{% url "delete-task" Task.id %}'">
-                <img class="delete_icon" src="{% static 'todo/delete.png' %}" alt="Delete" />
-            </div>
-            <div class="transition_button_container">
-                <div class="transition_button" onclick="location.href='{% url "swap-status" Task.id %}'">DO</div>
-            </div>
-        {% endif %}
-        </div>
-        {% empty %}
-        {% endfor %}
-        {% endif %}
-        <div class="empty-task-container">
-            <form id="new-task-form" action="/add-task/W" method="POST">
-                <input class="task-input" type="text" name="task-text" value="New Action Item">
-                <div class="generic_button_container">
-                    <input type="submit" class="add_button" value="ADD">
+                <div class="task-text">
+                    <del>{{ Task.text }}</del>
                 </div>
-            </form>
-        </div>
-    </div>
-    <div class="list-container">
-        <div class="list_title">
-            Monthly
-        </div>
-        {% if monthly_list %}
-        {% for Task in monthly_list %}
-        <div class="task-container">
-            {% if Task.completed %}
-            <div class="completeness-image-container">
-                <img class="completeness_icon" src="{% static 'todo/completed.png' %}" alt="Completed"/>
-            </div>
-            <div class="task-text">
-                <del>{{ Task.text }}</del>
-            </div>
-            <div class="delete_button" onclick="location.href='{% url "delete-task" Task.id %}'">
-                <img class="delete_icon" src="{% static 'todo/delete.png' %}" alt="Delete"/>
-            </div>
-            <div class="transition_button_container">
-                <div class="transition_button" onclick="location.href='{% url "swap-status" Task.id %}'">UNDO</div>
-            </div>
-            {% else %}
-            <div class="completeness-image-container">
-                <img class="completeness_icon" src="{% static 'todo/incomplete.png' %}" alt="Incomplete"/>
-            </div>
-            <div class="task-text">
-                {{ Task.text }}
-            </div>
-            <div class="delete_button" onclick="location.href='{% url "delete-task" Task.id %}'">
-                <img class="delete_icon" src="{% static 'todo/delete.png' %}" alt="Delete" />
-            </div>
-            <div class="transition_button_container">
-                <div class="transition_button" onclick="location.href='{% url "swap-status" Task.id %}'">DO</div>
-            </div>
-        {% endif %}
-        </div>
-        {% empty %}
-        {% endfor %}
-        {% endif %}
-        <div class="empty-task-container">
-            <form id="new-task-form" action="/add-task/M" method="POST">
-                <input class="task-input" type="text" name="task-text" value="New Action Item">
-                <div class="generic_button_container">
-                    <input type="submit" class="add_button" value="ADD">
+                <div class="delete_button" onclick="location.href='{% url "delete-task" Task.id %}'">
+                    <img class="delete_icon" src="{% static 'todo/delete.png' %}" alt="Delete"/>
                 </div>
-            </form>
+                <div class="transition_button_container">
+                    <div class="transition_button" onclick="location.href='{% url "swap-status" Task.id %}'">UNDO</div>
+                </div>
+                {% else %}
+                <div class="completeness-image-container">
+                    <img class="completeness_icon" src="{% static 'todo/incomplete.png' %}" alt="Incomplete"/>
+                </div>
+                <div class="task-text">
+                    {{ Task.text }}
+                </div>
+                <div class="delete_button" onclick="location.href='{% url "delete-task" Task.id %}'">
+                    <img class="delete_icon" src="{% static 'todo/delete.png' %}" alt="Delete" />
+                </div>
+                <div class="transition_button_container">
+                    <div class="transition_button" onclick="location.href='{% url "swap-status" Task.id %}'">DO</div>
+                </div>
+            {% endif %}
+            </div>
+            {% empty %}
+            {% endfor %}
+            {% endif %}
+            <div class="empty-task-container">
+                <form id="new-task-form" action="/add-task/D" method="POST">
+                    <input class="task-input" type="text" name="task-text" value="New Action Item">
+                    <div class="generic_button_container">
+                        <input type="submit" class="add_button" value="ADD">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="list-container">
+            <div class="list_title">
+                Weekly
+            </div>
+            {% if weekly_list %}
+            {% for Task in weekly_list %}
+            <div class="task-container">
+                {% if Task.completed %}
+                <div class="completeness-image-container">
+                    <img class="completeness_icon" src="{% static 'todo/completed.png' %}" alt="Completed"/>
+                </div>
+                <div class="task-text">
+                    <del>{{ Task.text }}</del>
+                </div>
+                <div class="delete_button" onclick="location.href='{% url "delete-task" Task.id %}'">
+                    <img class="delete_icon" src="{% static 'todo/delete.png' %}" alt="Delete"/>
+                </div>
+                <div class="transition_button_container">
+                    <div class="transition_button" onclick="location.href='{% url "swap-status" Task.id %}'">UNDO</div>
+                </div>
+                {% else %}
+                <div class="completeness-image-container">
+                    <img class="completeness_icon" src="{% static 'todo/incomplete.png' %}" alt="Incomplete"/>
+                </div>
+                <div class="task-text">
+                    {{ Task.text }}
+                </div>
+                <div class="delete_button" onclick="location.href='{% url "delete-task" Task.id %}'">
+                    <img class="delete_icon" src="{% static 'todo/delete.png' %}" alt="Delete" />
+                </div>
+                <div class="transition_button_container">
+                    <div class="transition_button" onclick="location.href='{% url "swap-status" Task.id %}'">DO</div>
+                </div>
+            {% endif %}
+            </div>
+            {% empty %}
+            {% endfor %}
+            {% endif %}
+            <div class="empty-task-container">
+                <form id="new-task-form" action="/add-task/W" method="POST">
+                    <input class="task-input" type="text" name="task-text" value="New Action Item">
+                    <div class="generic_button_container">
+                        <input type="submit" class="add_button" value="ADD">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="list-container">
+            <div class="list_title">
+                Monthly
+            </div>
+            {% if monthly_list %}
+            {% for Task in monthly_list %}
+            <div class="task-container">
+                {% if Task.completed %}
+                <div class="completeness-image-container">
+                    <img class="completeness_icon" src="{% static 'todo/completed.png' %}" alt="Completed"/>
+                </div>
+                <div class="task-text">
+                    <del>{{ Task.text }}</del>
+                </div>
+                <div class="delete_button" onclick="location.href='{% url "delete-task" Task.id %}'">
+                    <img class="delete_icon" src="{% static 'todo/delete.png' %}" alt="Delete"/>
+                </div>
+                <div class="transition_button_container">
+                    <div class="transition_button" onclick="location.href='{% url "swap-status" Task.id %}'">UNDO</div>
+                </div>
+                {% else %}
+                <div class="completeness-image-container">
+                    <img class="completeness_icon" src="{% static 'todo/incomplete.png' %}" alt="Incomplete"/>
+                </div>
+                <div class="task-text">
+                    {{ Task.text }}
+                </div>
+                <div class="delete_button" onclick="location.href='{% url "delete-task" Task.id %}'">
+                    <img class="delete_icon" src="{% static 'todo/delete.png' %}" alt="Delete" />
+                </div>
+                <div class="transition_button_container">
+                    <div class="transition_button" onclick="location.href='{% url "swap-status" Task.id %}'">DO</div>
+                </div>
+            {% endif %}
+            </div>
+            {% empty %}
+            {% endfor %}
+            {% endif %}
+            <div class="empty-task-container">
+                <form id="new-task-form" action="/add-task/M" method="POST">
+                    <input class="task-input" type="text" name="task-text" value="New Action Item">
+                    <div class="generic_button_container">
+                        <input type="submit" class="add_button" value="ADD">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 {% endblock %}

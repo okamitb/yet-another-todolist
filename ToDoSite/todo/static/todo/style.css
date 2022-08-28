@@ -4,8 +4,25 @@
 }
 
 body {
+    background: rgb(230, 230, 230);
+}
+
+body {
     margin: 10px;
 }
+
+/*
+Navbar
+ */
+
+#navbar_title {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 110%;
+    font-weight: bold;
+}
+
 
 /*
 Login
@@ -98,13 +115,37 @@ User Registration
 ToDo List
  */
 
+#lists-container {
+    overflow: hidden;
+    margin: 0px auto;
+    padding-left: 1px;
+    width: 1235px;
+}
+
+@media only screen and (min-width:840px) {
+    @media only screen and (max-width: 1255px) {
+        #lists-container {
+            width: 825px;
+        }
+    }
+}
+
+@media only screen and (min-width:440px) {
+    @media only screen and (max-width: 840px) {
+        #lists-container {
+            width: 415px;
+        }
+    }
+}
+
 .list-container {
     border: 1px solid black;
+    background: white;
     width: 400px;
     padding-bottom: 10px;
     float: left;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin: 0px 5px 10px 5px;
+    display: inline-block;
 }
 
 .list_title {
@@ -116,9 +157,9 @@ ToDo List
 }
 
 .task-container, .empty-task-container {
-    padding: 5px 10px 5px 10px;
+    padding: 5px 5px 5px 10px;
     margin: 5px;
-    width: 375px;
+    width: 380px;
     overflow: auto;
 }
 
@@ -141,10 +182,18 @@ input {
   all: unset;
 }
 
-.task-input, .task-text {
+.task-input {
     height: 16px;
+}
+
+.task-text {
+    line-height: 22px;
+    height: 22px;
+}
+
+.task-input, .task-text {
     margin-bottom: 1px;
-    width: 265px;
+    width: 255px;
     float: left;
     border-bottom: 1px solid black;
 }
@@ -152,19 +201,27 @@ input {
 .transition_button, .add_button {
     margin-top: 2px;
     border: 1px solid black;
-    background: cyan;
-    width: 50px;
-    height: 16px;
     float: right;
     border-radius: 3px;
     text-align: center;
-    font-size: 90%;
+    font-size: 75%;
+}
+
+.transition_button {
+    height: 18px;
+    position: relative;
+    top: 4px;
+    width: 50px;
+    background: cyan;
 }
 
 .add_button {
     float: left;
-    margin-left: 8px;
+    margin-left: 10px;
     background: lightgreen;
+    line-height: 0px;
+    height: 16px;
+    width: 48px;
 }
 
 .delete_button {
