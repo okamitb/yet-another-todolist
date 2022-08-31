@@ -1,4 +1,7 @@
-<nav class="navbar navbar-light bg-light nav-title">
+<nav id="index_navbar" class="navbar navbar-light bg-light nav-title">
     <span id="navbar_title">Lists</span>
+    {% if logged_in %}
+    <div id="logout-button" class="btn btn-secondary" onclick="location.href='{% url "logout" %}'">Logout</div>
+    {% endif %}
 </nav>
 &nbsp

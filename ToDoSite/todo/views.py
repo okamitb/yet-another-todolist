@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from .models import Task
 from django.views.decorators.csrf import csrf_exempt
@@ -11,39 +12,54 @@ from django.contrib import messages
 
 @login_required
 def index(request):
-    daily_list = Task.objects.filter(list_type="D").order_by("id")
-    weekly_list = Task.objects.filter(list_type="W").order_by("id")
-    monthly_list = Task.objects.filter(list_type="M").order_by("id")
+    user_id = request.session['_auth_user_id']
+    daily_list = Task.objects.filter(user_id=user_id, list_type="D").order_by("id")
+    weekly_list = Task.objects.filter(user_id=user_id, list_type="W").order_by("id")
+    monthly_list = Task.objects.filter(user_id=user_id, list_type="M").order_by("id")
     context = {
         "daily_list": daily_list,
         "weekly_list": weekly_list,
-        "monthly_list": monthly_list
+        "monthly_list": monthly_list,
+        "logged_in": True
     }
     return render(request, "todo/index.html", context)
 
 
+@login_required
+def logout_request(request):
+    logout(request)
+    return redirect(login_request)
+
+
+@login_required
 def swap_status(request, task_id):
     item = Task.objects.get(id=task_id)
     item.swap_status()
     return redirect(index)
 
 
+@login_required
 def delete_task(request, task_id):
     item = Task.objects.get(id=task_id)
     item.delete()
     return redirect(index)
 
 
+@login_required
 @csrf_exempt
 def add_task(request, task_type):
+    user_id = request.session['_auth_user_id']
     new_task_text = request.POST['task-text']
-    item = Task(text=new_task_text, completed=False, list_type=task_type)
+    item = Task(user_id=user_id, text=new_task_text, completed=False, list_type=task_type)
     item.save()
     return redirect(index)
 
 
+
 @csrf_exempt
 def register_request(request):
+    if '_auth_user_id' in request.session:
+        return redirect(index)
     if request.method == "POST":
         form = NewUserForm(request.POST)
         if form.is_valid():
@@ -61,6 +77,8 @@ def register_request(request):
 
 
 def login_request(request):
+    if '_auth_user_id' in request.session:
+        return redirect(index)
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -69,7 +87,6 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"You are now logged in as {username}.")
                 return redirect(index)
             else:
                 messages.error(request, "Invalid username or password.")

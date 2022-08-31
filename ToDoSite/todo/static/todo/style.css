@@ -11,6 +11,31 @@ body {
     margin: 10px;
 }
 
+#index_navbar, #login-container, #register-container, .lists-container {
+    border: 1px solid rgba(0,0,0,.3);
+    border-radius: 3px;
+}
+
+input {
+    all: unset;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 /*
 Navbar
  */
@@ -23,6 +48,11 @@ Navbar
     font-weight: bold;
 }
 
+#logout-button {
+    padding: 4px 8px;
+    font-size: 70%;
+
+}
 
 /*
 Login
@@ -38,11 +68,11 @@ Login
 }
 
 #login-container {
-    border: 1px solid black;
     width: 310px;
     text-align: center;
     padding: 10px;
     margin: auto;
+    background: white;
 }
 
 #login-container input {
@@ -75,11 +105,11 @@ User Registration
 }
 
 #register-container {
-    border: 1px solid black;
     width: 400px;
     text-align: center;
     padding: 10px;
     margin: auto;
+    background: white;
 }
 
 #register-container label {
@@ -88,8 +118,7 @@ User Registration
 
 #register-container input[type=text],
 #register-container input[type=password],
-#register-container input[type=email]
-{
+#register-container input[type=email] {
     margin-top: 20px;
 }
 
@@ -98,7 +127,6 @@ User Registration
     margin-bottom: 15px;
     font-size: 180%;
 }
-
 
 #register-container input {
     border: 1px solid black;
@@ -139,7 +167,7 @@ ToDo List
 }
 
 .list-container {
-    border: 1px solid black;
+    border: 1px solid rgba(0,0,0,.3);
     background: white;
     width: 400px;
     padding-bottom: 10px;
@@ -178,10 +206,6 @@ ToDo List
     height: 17px;
 }
 
-input {
-  all: unset;
-}
-
 .task-input {
     height: 16px;
 }
@@ -189,6 +213,12 @@ input {
 .task-text {
     line-height: 22px;
     height: 22px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.task-text:hover {
+    overflow-x: auto;
 }
 
 .task-input, .task-text {
