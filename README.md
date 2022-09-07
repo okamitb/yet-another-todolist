@@ -19,6 +19,6 @@ ___
 ### Future Plans
 The goal for this project is to a completely containerized application that is deployed and managed with a single docker-compose command.  In terms of project features, I plan to add:
 1. DONE ~~Add/Modify/Delete Action Items~~ 
-2. Daily, Weekly, and Monthly To-Do sections
-3. Multi-user support
+2. ~~Daily, Weekly, and Monthly To-Do sections~~
+3. ~~Multi-user support~~
 4. AWS EC2 + Route53 deployment
