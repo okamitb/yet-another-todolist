@@ -13,10 +13,11 @@ class Task(models.Model):
     text = models.CharField(max_length=300)
     completed = models.BooleanField()
     list_type = models.CharField(max_length=1, choices=LIST_TYPES, default="W")
+    user_id = models.IntegerField(default=0)
 
     def __str__(self):
         complete = "Done" if self.is_completed() else "Not Done"
-        return f'({complete}) {self.text}'
+        return f'({complete}) {self.text} - User {self.user_id}'
 
     def is_completed(self):
         return self.completed

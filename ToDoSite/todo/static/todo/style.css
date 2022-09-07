@@ -4,16 +4,176 @@
 }
 
 body {
+    background: rgb(230, 230, 230);
+}
+
+body {
     margin: 10px;
 }
 
-.list-container {
+#index_navbar, #login-container, #register-container, .lists-container {
+    border: 1px solid rgba(0,0,0,.3);
+    border-radius: 3px;
+}
+
+input {
+    all: unset;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/*
+Navbar
+ */
+
+#navbar_title {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 110%;
+    font-weight: bold;
+}
+
+#logout-button {
+    padding: 4px 8px;
+    font-size: 70%;
+
+}
+
+/*
+Login
+ */
+
+#login-body {
+    width: 100%;
+    text-align: center;
+}
+
+.blue {
+    color: blue;
+}
+
+#login-container {
+    width: 310px;
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+    background: white;
+}
+
+#login-container input {
+    border-bottom: 1px solid black;
+    margin: 10px;
+    text-align: left;
+}
+
+#login-container button {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 3px 5px 3px 5px;
+}
+
+.form-message {
+    width: 80%;
+    margin: 7px auto;
+    font-size: 90%;
+    padding: 2px 3px;
+    line-height: 15px;
+}
+
+/*
+User Registration
+ */
+
+#register-body {
+    width: 100%;
+    text-align: center;
+}
+
+#register-container {
+    width: 400px;
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+    background: white;
+}
+
+#register-container label {
+    position: absolute;
+}
+
+#register-container input[type=text],
+#register-container input[type=password],
+#register-container input[type=email] {
+    margin-top: 20px;
+}
+
+#register-container h1 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 180%;
+}
+
+#register-container input {
     border: 1px solid black;
-    border-radius: 5px;
+    text-align: left;
+    padding: 2px 5px 2px 5px;
+}
+
+#register-container button {
+    margin: 10px auto 20px auto;
+    padding: 3px 5px 3px 5px;
+}
+
+/*
+ToDo List
+ */
+
+#lists-container {
+    overflow: hidden;
+    margin: 0px auto;
+    padding-left: 1px;
+    width: 1235px;
+}
+
+@media only screen and (min-width:840px) {
+    @media only screen and (max-width: 1255px) {
+        #lists-container {
+            width: 825px;
+        }
+    }
+}
+
+@media only screen and (min-width:440px) {
+    @media only screen and (max-width: 840px) {
+        #lists-container {
+            width: 415px;
+        }
+    }
+}
+
+.list-container {
+    border: 1px solid rgba(0,0,0,.3);
+    background: white;
     width: 400px;
     padding-bottom: 10px;
     float: left;
-    margin-right: 10px;
+    margin: 0px 5px 10px 5px;
+    display: inline-block;
 }
 
 .list_title {
@@ -25,9 +185,9 @@ body {
 }
 
 .task-container, .empty-task-container {
-    padding: 5px 10px 5px 10px;
+    padding: 5px 5px 5px 10px;
     margin: 5px;
-    width: 375px;
+    width: 380px;
     overflow: auto;
 }
 
@@ -46,14 +206,24 @@ body {
     height: 17px;
 }
 
-input {
-  all: unset;
+.task-input {
+    height: 16px;
+}
+
+.task-text {
+    line-height: 22px;
+    height: 22px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.task-text:hover {
+    overflow-x: auto;
 }
 
 .task-input, .task-text {
-    height: 16px;
     margin-bottom: 1px;
-    width: 265px;
+    width: 255px;
     float: left;
     border-bottom: 1px solid black;
 }
@@ -61,19 +231,27 @@ input {
 .transition_button, .add_button {
     margin-top: 2px;
     border: 1px solid black;
-    background: cyan;
-    width: 50px;
-    height: 16px;
     float: right;
     border-radius: 3px;
     text-align: center;
-    font-size: 90%;
+    font-size: 75%;
+}
+
+.transition_button {
+    height: 18px;
+    position: relative;
+    top: 4px;
+    width: 50px;
+    background: cyan;
 }
 
 .add_button {
     float: left;
-    margin-left: 8px;
+    margin-left: 10px;
     background: lightgreen;
+    line-height: 0px;
+    height: 16px;
+    width: 48px;
 }
 
 .delete_button {
