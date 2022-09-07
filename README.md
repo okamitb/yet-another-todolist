@@ -13,8 +13,7 @@ Currently this project can only be run directly on the host.
 1. Modify create your own .env if you would like to replace environment variables in the *docker-compose.yml* file.
 2. Deploy the postgres container using the *docker-compose.yml* file. 
    1. `docker-compose up -f docker-compose.yml`
-3. Deploy the server using python-3.10
-   1. `python manage.py runserver`
+3. The server will be listening on `localhost:8000`
 ___
 ### Future Plans
 The goal for this project is to a completely containerized application that is deployed and managed with a single docker-compose command.  In terms of project features, I plan to add:
